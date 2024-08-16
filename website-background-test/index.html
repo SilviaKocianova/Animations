@@ -15,6 +15,7 @@
         font-family: 'Prompt', sans-serif;
         color: white;
         background: #202731;
+        overflow-x: hidden; /*to fix the x overflow*/
     }
 
     section {
@@ -43,25 +44,106 @@
         background: #0f0f10;
     }
 
+    
+    .curve {
+        position: absolute;
+        height: 225px;
+        width: 100%;
+        bottom: 0;
+    }
+
+    .curve::before {
+        content: '';
+        display: block;
+        position: absolute;
+        border-radius: 100% 50%;
+        width: 55%;
+        height: 100%;
+        background-color: #202731;
+        transform: translate(85%, 60%);
+    }
+
+    .curve::after {
+        content: '';
+        display: block;
+        position: absolute;
+        border-radius: 100% 50%;
+        width: 55%;
+        height: 100%;
+        background-color: #3c31dd;
+        transform: translate(-4%, 40%); /*move the circle to another location*/
+        z-index: -1; /* = darker element will sit on top of lighter one*/
+   }
+
+   .bubble::after {
+    content: '';
+    border-top-left-radius: 50% 100%;
+    border-top-right-radius: 50% 100%;
+    position: absolute;
+    bottom: 0;
+    height: 85%;
+    width: 100%;
+    background-color: #0f0f10;
+    z-index: -1;
+   }
+
+   .wave {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.wave svg {
+    position: relative;
+    display: block;
+    width: calc(105% + 1.3px);
+    height: 166px;
+}
+
+.wave .shape-fill {
+    fill: #0f0f10;
+}
+
+.spacer {
+    aspect-ratio: 900/300;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.layer1 {
+    background-image: url('./layer1.svg');
+}
 </style>
 </head>
 <body>
     <section class="blue">
         <h1>Nice Curves</h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis alias suscipit nesciunt quas vel quod amet eos excepturi? Temporibus quae quaerat, facilis laudantium laborum doloremque. Quod neque nobis temporibus optio.</p>
+    <div class="curve"></div>
     </section>
-    <section>
+    <section class="bubble">
         <h1>Nice Curves</h1>
         <p>Quod recusandae nam nulla non. Cupiditate dolorum, modi nobis ea exercitationem ut reprehenderit aspernatur nisi facilis incidunt dolores eaque earum illum quaerat dicta molestias iusto unde! Temporibus nam blanditiis velit!</p>
     </section>
-    <section>
+    <section class="dark">
         <h1>Nice Curves</h1>
         <p>Provident eaque quisquam officia, doloribus ratione qui sit cupiditate laboriosam optio, facere sequi earum quae totam, voluptatum dolores? Labore, sint eos aspernatur ad ipsam quos hic voluptates rem cumque numquam.</p>
     </section>
-    <section>
+    <section class="red">
         <h1>Nice Curves</h1>
         <p>Dolores quis exercitationem deleniti, voluptatum corporis necessitatibus amet accusamus ratione possimus repellat odit autem laudantium voluptatem dolorem voluptate pariatur obcaecati perferendis! Nihil exercitationem distinctio expedita consectetur eaque dolorem, modi aperiam?</p>
+        <div class="wave">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
     </section>
+    <div class="spacer layer1"></div> 
     <section>
         <h1>Nice Curves</h1>
         <p>Voluptate blanditiis suscipit aliquam eos quod quasi deserunt incidunt saepe consequuntur excepturi fugit tenetur, autem earum necessitatibus amet? Quas provident est reiciendis ea dolores consequatur nihil quam libero debitis odio?</p>
